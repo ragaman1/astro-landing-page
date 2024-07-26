@@ -4,34 +4,48 @@ import { navItems } from "../../constants/navigation";
 ---
 
 <div id="menu-modal" class="modal hidden" aria-hidden="true">
-  <div class="fixed inset-0 bg-default px-8 py-4 text-default">
-    <div class="space-y-4" role="dialog" aria-modal="true">
-      <header class="text-right">
-        <button
-          id="close-nav-button"
-          type="button"
-          class="btn"
-          aria-label="Close navigation"
-        >
-          <Icon name="mdi:close" class="size-8" />
-        </button>
-      </header>
-      <div class="flex justify-center">
-        <Icon name="logomark" class="size-16" />
+  <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50">
+    <div class="fixed right-0 top-0 bottom-0 w-full max-w-sm bg-gradient-to-b from-primary to-secondary px-6 py-4 text-white overflow-y-auto transform transition-all duration-300 ease-in-out translate-x-full">
+      <div class="flex h-full flex-col justify-between" role="dialog" aria-modal="true">
+        <header class="flex items-center justify-between">
+          <a href="/" class="flex items-center gap-2">
+            <Icon name="logomark" class="h-8 w-auto" />
+            <span class="text-xl font-semibold">Astro</span>
+          </a>
+          <button
+            id="close-nav-button"
+            type="button"
+            class="rounded-full p-2 text-white transition-colors duration-200 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Close navigation"
+          >
+            <Icon name="mdi:close" class="h-6 w-6" />
+          </button>
+        </header>
+        <nav class="my-8">
+          <ul class="flex flex-col gap-4">
+            {
+              navItems.map(({ title, url }) => (
+                <li>
+                  <a
+                    class="block rounded-lg px-4 py-2 text-lg font-medium transition-all duration-200 hover:bg-white/10 hover:translate-x-1"
+                    href={url}
+                  >
+                    {title}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <footer class="flex justify-center gap-4">
+          <a href="https://github.com/astro-community" target="_blank" rel="noopener noreferrer" class="text-white transition-colors duration-200 hover:text-gray-300">
+            <Icon name="mdi:github" class="h-8 w-auto" />
+          </a>
+          <a href="https://twitter.com/astrodotbuild" target="_blank" rel="noopener noreferrer" class="text-white transition-colors duration-200 hover:text-gray-300">
+            <Icon name="mdi:twitter" class="h-8 w-auto" />
+          </a>
+        </footer>
       </div>
-      <nav>
-        <ul class="flex flex-col">
-          {
-            navItems.map(({ title, url }) => (
-              <li>
-                <a class="block py-4 text-center text-xl" href={url}>
-                  {title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
     </div>
   </div>
 </div>

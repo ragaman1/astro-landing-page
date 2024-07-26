@@ -1,8 +1,37 @@
 .fixed-header {
-  @apply fixed bottom-auto top-0;
-  @apply border-default bg-default text-default;
+  position: fixed;
+  bottom: auto;
+  top: 0;
+  border-color: var(--color-border-default);
+  background-color: var(--color-bg-default);
+  color: var(--color-text-default);
+}
+
+.modal {
+  display: none;
 }
 
 .modal.is-open {
-  @apply block;
+  display: block;
+}
+
+.modal.is-open > div > div {
+  transform: translateX(0);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal > div > div {
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
 }
