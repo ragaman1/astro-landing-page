@@ -1,0 +1,49 @@
+---
+interface Props {
+  text: string;
+  delay?: number;
+}
+
+const { text, delay = 100 } = Astro.props;
+---
+
+<span class="typewriter" data-text={text} data-delay={delay}></span>
+
+<script>
+  function typeWriter(element: HTMLElement, text: string, delay: number) {
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(type, delay);
+      }
+    }
+    type();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.typewriter');
+    elements.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        const text = el.dataset.text || '';
+        const delay = parseInt(el.dataset.delay || '100', 10);
+        typeWriter(el, text, delay);
+      }
+    });
+  });
+</script>
+
+<style>
+  .typewriter {
+    border-right: 0.15em solid currentColor;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: currentColor; }
+  }
+</style>

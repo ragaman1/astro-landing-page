@@ -5,6 +5,7 @@ import astronautImage from "~/assets/astronaut.png";
 import HeroImage from "~/components/hero-image.astro";
 import Starfield from "~/components/starfield.astro";
 import GitHubCorner from "./github-corner.astro";
+import Typewriter from "./Typewriter.astro";
 
 const widths = [450, 800];
 const sizes = "(min-width: 640px) 42vw, 67vw";
@@ -26,7 +27,7 @@ const sizes = "(min-width: 640px) 42vw, 67vw";
       >
         Build fast
         <br /> websites,
-        <br /> faster.
+        <br /> <Typewriter text="faster." delay={150} />
       </div>
     </h2>
     <div
