@@ -1,0 +1,17 @@
+---
+import { navItems } from "../../constants/navigation";
+---
+
+<nav class="hidden sm:block">
+  <ul class="flex items-center gap-6">
+    {
+      navItems.map(({ title, url }) => (
+        <li>
+          <a class="text-sm" href={url}>
+            {title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
